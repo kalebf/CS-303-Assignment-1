@@ -30,11 +30,10 @@ int main() {
             cin >> choice;
 
             switch (choice) {
-            //Check if a number exists in the array
-            case 1: { 
+            case 1: {//Check if a number exists in the array
                 int numToCheck;
                 cout << "Enter the number to check: ";
-                cin >> numToCheck;//number to check 
+                cin >> numToCheck;
                 int index = checkExistence(arr, size, numToCheck);
                 if (index != -1) {
                     cout << "Number " << numToCheck << " found at index " << index << endl;
@@ -44,8 +43,7 @@ int main() {
                 }
                 break;
             }
-            //Modify a value at a specific index
-            case 2: {
+            case 2: {//Modify a value at a specific index
                 int indexToModify, newValue;
                 cout << "Enter the index to modify: ";
                 cin >> indexToModify;
@@ -54,13 +52,12 @@ int main() {
                 try {
                     modifyValue(arr, indexToModify, newValue, size);
                 }
-                catch (const out_of_range& e) {//throws an error when choosing an invalid index
+                catch (const out_of_range& e) {//error if index choice is out of bound
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            //Add a new integer to the end of the array
-            case 3: {
+            case 3: {//Add a new integer to the end of the array
                 int newElement;
                 cout << "Enter the new integer to add: ";
                 cin >> newElement;
@@ -68,13 +65,12 @@ int main() {
                     addValue(arr, newElement, size);
                     cout << "Added " << newElement << " to the array." << endl;
                 }
-                catch (const overflow_error& e) {
-                    cerr << "Error: " << e.what() << endl; {//throws an error when adding an integer to a full array
+                catch (const overflow_error& e) {//error if array is full, can't add more 
+                    cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            //Remove an integer at a specific index
-            case 4: {
+            case 4: {//Remove an integer at a specific index
                 int indexToRemove;
                 cout << "Enter the index to remove: ";
                 cin >> indexToRemove;
@@ -82,13 +78,12 @@ int main() {
                     removeOrReplace(arr, size, indexToRemove, true);
                     cout << "Removed element at index " << indexToRemove << endl;
                 }
-                catch (const out_of_range& e) {//throws an error when choosing an invalid index
+                catch (const out_of_range& e) {//error if index choice is out of bound
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            //Replace an integer at a specific index with 0
-            case 5: {
+            case 5: {//Replace an integer at a specific index with 0
                 int indexToReplace;
                 cout << "Enter the index to replace with 0: ";
                 cin >> indexToReplace;
@@ -96,13 +91,12 @@ int main() {
                     removeOrReplace(arr, size, indexToReplace, false);
                     cout << "Replaced element at index " << indexToReplace << " with 0" << endl;
                 }
-                catch (const out_of_range& e) {//throws an error when choosing an invalid index
+                catch (const out_of_range& e) {//error if index choice is out of bound
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            //Display the array
-            case 6: {
+            case 6: {//Display the array
                 cout << "Array content:" << endl;
                 for (int i = 0; i < size; i++) {
                     cout << arr[i] << " ";
@@ -110,13 +104,12 @@ int main() {
                 cout << endl;
                 break;
             }
-            //Exits program
-            case 7: {
+            case 7: {//Exits program
                 running = false;
                 cout << "Exiting program." << endl;
                 break;
             }
-            default: {//makes sure to keep user from choosing an option outside of the options 
+            default: {//Makes sure user makes a choice from the menu
                 cout << "Invalid choice. Please select again." << endl;
                 break;
             }
